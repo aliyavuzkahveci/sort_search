@@ -6,6 +6,7 @@
 #include "selectionsort.h"
 #include "quicksort.h"
 #include "insertionsort.h"
+#include "shellsort.h"
 #include "bubblesort.h"
 
 using namespace search_alg;
@@ -207,6 +208,30 @@ void insertionsort_operations()
     std::cout << "=======================================" << std::endl;
 }
 
+void shellsort_operations()
+{
+    std::cout << std::endl << "=======================================" << std::endl;
+    std::cout << "Starting Shell Sort operations..." << std::endl;
+
+    int intArray[] = { 24, 13, 9, 64, 7, 23, 34, 47 };
+	size_t arraySize = 8;
+
+	printArray<int>(intArray, arraySize);
+
+	std::cout << "===Before ShellSort===" << std::endl;
+	std::cout << "isSorted=" << std::boolalpha << isSorted<int>(intArray, 0, 7) << std::endl;
+
+	ShellSort<int>(intArray, arraySize);
+
+	std::cout << "===After ShellSort===" << std::endl;
+	std::cout << "isSorted=" << std::boolalpha << isSorted<int>(intArray, 0, 7) << std::endl;
+
+	printArray<int>(intArray, arraySize);
+
+    std::cout << "Ending Shell Sort operations..." << std::endl;
+    std::cout << "=======================================" << std::endl;
+}
+
 void bubblesort_operations()
 {
     std::cout << std::endl << "=======================================" << std::endl;
@@ -276,6 +301,8 @@ int main()
     quicksort_operations();
 
     insertionsort_operations();
+
+    shellsort_operations();
 
     bubblesort_operations();
 
