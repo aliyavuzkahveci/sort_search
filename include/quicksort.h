@@ -67,6 +67,39 @@ namespace sort_alg
         // start sorting using QuickSort algorithm
         sort(array, 0, arraySize - 1);
     }
+
+    // returns the kth smallest element in the array!
+    template<typename T>
+    T QuickSelect(T* array, unsigned int arraySize, unsigned int kth)
+    {
+        if(kth > arraySize)
+        {
+            throw std::out_of_range("value not found in the array!");
+        }
+        utils::shuffle(array, arraySize);
+        auto start = 0;
+        auto end = arraySize-1;
+
+        while(start < end) {
+            auto j = partition(array, start, end);
+
+            if(j < kth) // kth smallest element stays in the second half!
+            {
+                start = j + 1; // next round, check the SECOND half
+            }
+            else if (j > kth) // kth smallest element stays in the first half!
+            {
+                end = j - 1; // next round, check the FIRST half
+            }
+            else
+            {
+                return array[j]; // partition element is the kth smallest one!
+            }
+            
+        }
+
+        return array[kth];
+    }
 } // namespace sort_alg
 
 #endif // _QUICK_SORT_H_

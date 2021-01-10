@@ -290,6 +290,27 @@ void binarysearch_operations() {
     std::cout << "=======================================" << std::endl;
 }
 
+void quickselect_operations()
+{
+    std::cout << std::endl << "=======================================" << std::endl;
+    std::cout << "Starting Quick Select operations..." << std::endl;
+
+    char charArray[] = { 'Q','U','I','C','K','S','O','R','T','E','X','A','M','P','L','E' };
+	size_t arraySize = 16;
+
+	printArray<char>(charArray, arraySize);
+
+    auto kth = 3;
+	auto element = QuickSelect<char>(charArray, arraySize, kth);
+    std::cout << kth << "th smallest element is: " << element << std::endl;
+
+    QuickSort<char>(charArray, arraySize);
+    printArray<char>(charArray, arraySize);
+
+    std::cout << "Ending Quick Select operations..." << std::endl;
+    std::cout << "=======================================" << std::endl;
+}
+
 int main()
 {
     bst_oeprations();
@@ -307,6 +328,8 @@ int main()
     bubblesort_operations();
 
     binarysearch_operations();
+
+    quickselect_operations();
 
     return 0;
 }
